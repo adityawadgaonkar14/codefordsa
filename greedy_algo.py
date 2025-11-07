@@ -51,3 +51,26 @@ print("Profits:", profits)
 max_profit = fractional_knapsack(weights, profits, capacity)
 
 print(f"\nMaximum profit that can be earned: {max_profit:.2f}")
+
+
+
+
+
+
+
+Algorithm: Fractional Knapsack (Greedy Method)
+1.	Start
+2.	Input n items with their weights w[i] and profits p[i], and capacity W.
+3.	Compute ratio[i] = p[i] / w[i] for all items.
+4.	Sort items in descending order of ratio[i].
+5.	Initialize total_profit = 0, remaining = W.
+6.	For each item:
+o	If w[i] ≤ remaining:
+	Take whole item → total_profit += p[i], remaining -= w[i]
+o	Else
+	Take fraction → total_profit += ratio[i] * remaining
+	Break
+7.	Print total_profit
+8.	Stop
+
+
