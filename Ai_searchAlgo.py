@@ -69,3 +69,22 @@ if path:
         print()
 else:
     print("No path found!")
+
+
+
+Algorithm: BFS Maze Navigation
+1.	Input: Maze (2D grid), Start node, Goal node
+2.	Initialize:
+o	Queue ← [Start]
+o	Visited[Start] ← True
+3.	Repeat until queue is empty:
+o	Remove front cell → Current
+o	If Current = Goal → Stop (path found)
+o	For each Neighbor of Current (up, down, left, right):
+	If Neighbor is inside maze, not a wall, and not visited →
+	Mark visited
+	Store parent (for path)
+	Add Neighbor to queue
+4.	Reconstruct path from Goal to Start using parent links
+5.	Output: Shortest path
+
