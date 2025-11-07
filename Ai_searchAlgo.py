@@ -46,5 +46,3 @@ goal = (3, 4)
 path = bfs_maze(maze, start, goal)
 if path:
     print("Shortest Path:", path)
-else:
-    print("No path found.")
