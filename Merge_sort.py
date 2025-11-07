@@ -46,3 +46,15 @@ print("\nOriginal delivery times:", orders)
 merge_sort(orders)
 
 print("Sorted delivery times (Quickest first):", orders)
+
+
+Algorithm: Sort Online Orders by Delivery Time using Merge Sort
+1.	Start
+2.	Input the list of delivery times.
+3.	If the list has more than one element:
+a. Divide the list into two halves — left and right.
+b. Recursively apply Merge Sort on both halves.
+c. Merge the two sorted halves into a single sorted list (smallest first).
+4.	Output the sorted delivery times (quicker deliveries first).
+5.	Stop
+
