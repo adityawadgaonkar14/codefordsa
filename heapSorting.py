@@ -36,3 +36,23 @@ arr = list(map(int, input("Enter numbers separated by space: ").split()))
 print("Original array:", arr)
 heap_sort(arr)
 print("Sorted array in ascending order:", arr)
+
+
+
+
+
+
+
+
+Algorithm: Heap Sort
+1.	Start
+2.	Input the array of n elements.
+3.	Build a max heap from the array
+(Make sure each parent node is greater than its children.)
+4.	Repeat the following steps until the heap size becomes 1:
+o	Swap the first element (maximum) with the last element.
+o	Reduce the heap size by 1.
+o	Heapify the root element to maintain the max heap property.
+5.	The array is now sorted in ascending order.
+6.	Stop
+
