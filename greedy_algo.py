@@ -1,32 +1,53 @@
-class Parcel:
-    def __init__(self, weight, profit):
-        self.weight = weight
-        self.profit = profit
-        self.ratio = profit / weight
+# Fractional Knapsack using Greedy Algorithm
 
-def fractional_knapsack(parcels, capacity):
-    parcels.sort(key=lambda x: x.ratio, reverse=True)
-    total_profit = 0.0
+def fractional_knapsack(weights, profits, capacity):
+    n = len(weights)
+    ratio = []
+
+    # Step 1: Calculate profit/weight ratio
+    for i in range(n):
+        ratio.append(profits[i] / weights[i])
+
+    # Step 2: Combine and sort by ratio (descending order)
+    items = list(zip(weights, profits, ratio))
+    items.sort(key=lambda x: x[2], reverse=True)
+
+    total_profit = 0
     remaining_capacity = capacity
 
-    for p in parcels:
-        if p.weight <= remaining_capacity:
-            total_profit += p.profit
-            remaining_capacity -= p.weight
+    print("\nSelected items (weight, profit, taken fraction):")
+
+    # Step 3: Pick items greedily
+    for w, p, r in items:
+        if remaining_capacity >= w:
+            total_profit += p
+            remaining_capacity -= w
+            print(f"({w}, {p}, 1.0)")
         else:
-            total_profit += p.profit * (remaining_capacity / p.weight)
+            fraction = remaining_capacity / w
+            total_profit += p * fraction
+            print(f"({w}, {p}, {fraction:.2f})")
             break
+
     return total_profit
 
-# Example
+
+# -------- MAIN PROGRAM --------
 n = int(input("Enter number of parcels: "))
-parcels = []
+weights = []
+profits = []
+
 for i in range(n):
-    w = float(input(f"Weight of parcel {i+1}: "))
-    p = float(input(f"Profit of parcel {i+1}: "))
-    parcels.append(Parcel(w, p))
+    w = float(input(f"Enter weight of parcel {i+1}: "))
+    p = float(input(f"Enter profit of parcel {i+1}: "))
+    weights.append(w)
+    profits.append(p)
 
 capacity = float(input("Enter truck capacity: "))
-max_profit = fractional_knapsack(parcels, capacity)
-print("Maximum Profit:", round(max_profit, 2))
 
+print("\nWeights:", weights)
+print("Profits:", profits)
+
+max_profit = fractional_knapsack(weights, profits, capacity)
+
+print(f"\nMaximum profit that can be earned: {max_profit:.2f}")
