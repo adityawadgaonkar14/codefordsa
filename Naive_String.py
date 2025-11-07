@@ -29,3 +29,18 @@ if positions:
     print("Pattern found at indices:", positions)
 else:
     print("Pattern not found in the text.")
+
+
+
+
+Algorithm (Simple Steps)
+1.	Input the text and pattern.
+2.	Let n = length(text) and m = length(pattern).
+3.	For each position i from 0 to n - m:
+o	Compare pattern with text[i:i+m].
+o	If they are the same → print or store index i.
+4.	End.
+
+
+
+
