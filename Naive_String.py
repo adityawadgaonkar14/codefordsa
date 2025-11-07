@@ -1,18 +1,31 @@
+# Naive String Matching Algorithm
 
-def naive_string_match(text, pattern):
+def string_matching(text, pattern):
     n = len(text)
     m = len(pattern)
-    indices = []  # create a list to store indices
+    positions = []
 
+    # Loop through text till (n - m)
     for i in range(n - m + 1):
-        if text[i:i + m] == pattern:   # correct slicing
-            indices.append(i)          # correct way to append
+        match = True
+        # Check each character of pattern
+        for j in range(m):
+            if text[i + j] != pattern[j]:
+                match = False
+                break
+        if match:
+            positions.append(i)
+    
+    return positions
 
-    return indices
 
+# -------- MAIN PROGRAM --------
+text = input("Enter the text string: ")
+pattern = input("Enter the pattern to find: ")
 
-# Example usage
-text = "ABCAABCCBA"
-pattern = "ABC"
-result = naive_string_match(text, pattern)
-print("Pattern found at indices:", result)
+positions = string_matching(text, pattern)
+
+if positions:
+    print("Pattern found at indices:", positions)
+else:
+    print("Pattern not found in the text.")
